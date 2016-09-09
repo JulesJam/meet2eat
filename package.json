@@ -2,7 +2,7 @@
   "name": "meet2eat",
   "version": "1.0.0",
   "description": "WDI_LDN_21_PROJECT_4",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/JulesJam/meet2eat/issues"
   },
-  "homepage": "https://github.com/JulesJam/meet2eat#readme"
+  "homepage": "https://github.com/JulesJam/meet2eat#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0",
+    "morgan": "^1.7.0"
+  }
 }
