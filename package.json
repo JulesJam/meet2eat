@@ -1,0 +1,19 @@
+{
+  "name": "meet2eat",
+  "version": "1.0.0",
+  "description": "WDI_LDN_21_PROJECT_4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulesJam/meet2eat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulesJam/meet2eat/issues"
+  },
+  "homepage": "https://github.com/JulesJam/meet2eat#readme"
+}
