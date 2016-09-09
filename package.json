@@ -4,8 +4,7 @@
   "description": "WDI_LDN_21_PROJECT_4",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "postinstall": "bower install"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
