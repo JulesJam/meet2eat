@@ -1,0 +1,20 @@
+{
+  "name": "meet2eat",
+  "description": "WDI_LDN_21_PROJECT_4",
+  "main": "app.js",
+  "authors": [
+    "JulesJam <julian.wyatt@1xdconsulting.co.uk>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JulesJam/meet2eat",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.4"
+  }
+}
