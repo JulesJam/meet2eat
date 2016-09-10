@@ -18,13 +18,13 @@ function secureRoute(req, res, next){
 }
 
 router.route('/users')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(usersController.index)
   .post(usersController.create);
 
 
 router.route('/users/:id')
-  .all(secureRoute)
+  //.all(secureRoute)
   .get(usersController.show)
   .put(usersController.update)
   .patch(usersController.update)

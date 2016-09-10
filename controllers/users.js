@@ -15,7 +15,7 @@ function usersCreate(req, res){
 }
 
 function usersShow(req, res){
-  Users.findById(req.params.id, function(err, user){
+  User.findById(req.params.id, function(err, user){
     if(err) return res.status(500).json(err);
     if(!user) return res.status(404).json({message: "Could not find a user which matches the requested id"});
     return res.status(200).json(user);
