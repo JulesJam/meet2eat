@@ -4,10 +4,16 @@ var secret  = require('../config/tokens').secret;
 
 
 function register(req, res){
+  console.log(req.body);
   User.create(req.body, function(err, user) {
-    if(err) return res.status(400).json(err);
+    if(err) {
+      console.log(err);
+      return res.status(400).json(err);
+
+    };
     var payload = { _id: user._id, username: user.username };
     var token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
+    console.log(token);
     return res.status(200).json({
       message: "Success",
       token: token
