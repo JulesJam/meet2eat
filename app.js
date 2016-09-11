@@ -3,8 +3,9 @@ var app       = express();
 
 var mongoose  = require('mongoose');
 var bodyParser= require('body-parser');
-var cors = require('cors');
-
+var cors      = require('cors');
+var bluebird  = require('bluebird');
+    
 
 
 var environment = app.get('env');

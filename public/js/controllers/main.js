@@ -1,8 +1,18 @@
 angular
   .module("Meet2Eat")
+  .config(oAuthConfig)
   .controller("MainController", MainController);
 
-MainController.$inject = ["TokenService", "$state", "$rootScope"];
+oAuthConfig.$inject = ["$authProvider"];
+
+function oAuthConfig($authProvider){
+  $authProvider.facebook({
+    url:'/facebook',
+    clientId:'1407625159253897'
+  });
+}
+
+MainController.$inject = ["TokenService", "$state", "$rootScope", "$auth"];
 function MainController(TokenService, $state, $rootScope) {
 
   var self = this;
@@ -13,8 +23,15 @@ function MainController(TokenService, $state, $rootScope) {
   this.logout = function logout() {
     TokenService.clearToken();
     this.currentUser = null;
-    $state.go("home");
+    $state.go("login");
   }
+
+
+  this.authenticate = function(provider) {
+    console.log("Facebook?", provider);
+    $auth.authenticate(provider);
+  }
+
 
   $rootScope.$on("loggedIn", function() {
     self.currentUser = TokenService.decodeToken();

@@ -5,8 +5,17 @@ var beautifulUnique = require('mongoose-beautiful-unique-validation');
 var userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true},
   email: { type: String, required: true, unique:true},
-  passwordHash: {type: String, required: true}
+  passwordHash: String,
+  avatar: String,
+  facebookid: String
 });
+
+userSchema.pre('validate', function(next){
+  if(!this._password && !this.facebookId){
+    this.invalidate('password', "A password is required");
+  }
+  next();
+})
 
 userSchema.set ('toJson', {
   transform: function (document, json){

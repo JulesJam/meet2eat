@@ -4,6 +4,7 @@ var secret  = require('../config/tokens').secret;
 
 var usersController = require('../controllers/users');
 var authController  = require('../controllers/authentications');
+var facebookController = require('../controllers/facebookOauth');
 
 function secureRoute(req, res, next){
   if(!req.headers.authorization) return res.status(401).json({ message: "Unauthorised"});
@@ -32,5 +33,6 @@ router.route('/users/:id')
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.post('/facebook', facebookController.login);
 
 module.exports = router;

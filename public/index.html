@@ -8,17 +8,20 @@
     <script src="//npmcdn.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="//cdn.jsdelivr.net/satellizer/0.13.1/satellizer.min.js"></script>
     <script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+    <script src="//cdn.jsdelivr.net/satellizer/0.13.1/satellizer.min.js"></script>
 
   
   <!-- <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/bootstrap/dist/css/bootstrap.css"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
- -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+
 
   <script src="/js/app.js"></script>
   <script src="/js/controllers/main.js"></script>
   <script src="/js/controllers/login.js"></script>
   <script src="/js/controllers/register.js"></script>
+  <script src="/js/controllers/users.js"></script>
 
   <script src="/js/models/user.js"></script>
   <script src="/js/services/authInterceptor.js"></script>
@@ -28,24 +31,11 @@
 
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css">
-
-
-  <script type="text/javascript" src="/js/models/user.js"></script>
-<!--   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-
-
-
-
-
-
-
-
 
   
 </head>
-<body ng-controller="MainController as main">
+<body ng-controller="MainController as main" >
   <header>
     <nav class="navbar navbar-light bg-faded">
       <a class="navbar-brand" ui-sref="home">Meet2Eat</a>
@@ -70,7 +60,7 @@
   </header>
 
     <div class="container" ng-if="main.errorMessage">
-      <div class="alert alert-danger"></div>
+      <div class="alert alert-danger">{{ main.errorMessage }}</div>
     </div>
   <main class="container" ui-view></main>
 </body>
