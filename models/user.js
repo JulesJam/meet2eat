@@ -7,10 +7,11 @@ var userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique:true},
   passwordHash: String,
   avatar: String,
-  facebookid: String
+  facebookId: String
 });
 
 userSchema.pre('validate', function(next){
+  
   if(!this._password && !this.facebookId){
     this.invalidate('password', "A password is required");
   }

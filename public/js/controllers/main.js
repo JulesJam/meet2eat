@@ -7,13 +7,13 @@ oAuthConfig.$inject = ["$authProvider"];
 
 function oAuthConfig($authProvider){
   $authProvider.facebook({
-    url:'/facebook',
+    url:'/api/facebook',
     clientId:'1407625159253897'
   });
 }
 
 MainController.$inject = ["TokenService", "$state", "$rootScope", "$auth"];
-function MainController(TokenService, $state, $rootScope) {
+function MainController(TokenService, $state, $rootScope, $auth) {
 
   var self = this;
 
@@ -30,6 +30,8 @@ function MainController(TokenService, $state, $rootScope) {
   this.authenticate = function(provider) {
     console.log("Facebook?", provider);
     $auth.authenticate(provider);
+    $rootScope.$broadcast("loggedIn");
+    $state.go('users');
   }
 
 

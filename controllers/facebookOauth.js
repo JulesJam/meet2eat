@@ -1,10 +1,11 @@
 var User = require('../models/user');
 var request = require('request-promise');
 var jwt = require('jsonwebtoken');
+var bluebird = require('bluebird');
 var secret = require('../config/tokens').secret;
+var qs = require('qs');
 
 function login (req, res) {
-  console.log("this is the request", req);
   request.post({
     url: "https://graph.facebook.com/v2.5/oauth/access_token",
     qs: {
@@ -13,8 +14,10 @@ function login (req, res) {
       code: req.body.code,
       redirect_uri:"http://localhost:3000/"
     },
-    json: true
+    json: true,
+   
   })
+
   .then(function(access_token){
     return request.get({
       url: "https://graph.facebook.com/v2.5/me?fields=id,email,name,picture",
@@ -26,14 +29,14 @@ function login (req, res) {
     return User.findOne({ email: profile.email })
       .then(function(user) {
         if(user) {
-          user.githubId = profile.id;
+          user.facebookId = profile.id;
           user.avatar = profile.avatar_url;
         }
         else {
           user = new User({
-          username: profile.login,
+          username: profile.name,
           email: profile.email,
-          githubId: profile.id,
+          facebookId: profile.id,
           avatar: profile.avatar_url
           });
         }
@@ -47,6 +50,8 @@ function login (req, res) {
       avatar: user.avatar,
       username: user.username
     }
+    console.log("user",user)
+
 
     var token = jwt.sign(payload, secret, { expiresIn: '24h' });
 

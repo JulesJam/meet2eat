@@ -10,7 +10,8 @@ function TokenService($window, jwtHelper) {
   }
 
   this.getToken = function getToken() {
-    return $window.localStorage.getItem('token');
+    return $window.localStorage.getItem('satellizer_token')?  $window.localStorage.getItem('satellizer_token'): $window.localStorage.getItem('token');
+   
   }
 
   this.decodeToken = function decodeToken() {
