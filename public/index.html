@@ -9,6 +9,7 @@
     <script src="//cdn.jsdelivr.net/satellizer/0.13.1/satellizer.min.js"></script>
     <script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
     <script src="//cdn.jsdelivr.net/satellizer/0.13.1/satellizer.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBJ990JUIqfos2FWQPRQtxiavV3AhL72I"></script>
 
   
   <!-- <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -22,6 +23,7 @@
   <script src="/js/controllers/login.js"></script>
   <script src="/js/controllers/register.js"></script>
   <script src="/js/controllers/users.js"></script>
+  <script src="/js/controllers/map.js"></script>
 
   <script src="/js/models/user.js"></script>
   <script src="/js/services/authInterceptor.js"></script>
@@ -51,6 +53,9 @@
         </li>
         <li class="nav-item" ui-sref-active="active" ng-if="main.currentUser">
           <a class="nav-link" ui-sref="users">Users</a>
+        </li>
+        <li class="nav-item" ui-sref-active="active" ng-if="main.currentUser">
+          <a class="nav-link" ui-sref="map">Map</a>
         </li>
         <li class="nav-item" ng-if="main.currentUser">
           <a ng-click="main.logout()" class="nav-link">Logout</a>

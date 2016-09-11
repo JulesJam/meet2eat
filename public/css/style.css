@@ -6,3 +6,9 @@ body {
   width:100px;
 
 }
+
+.google-map{
+  width: 500px;
+  height: 500px;
+  margin:50px auto;
+}

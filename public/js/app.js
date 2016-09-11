@@ -34,6 +34,12 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: "/templates/users.html",
       controller: "UsersController as users"
     })
+
+    .state("map", {
+      url: "/map",
+      templateUrl: "/templates/map.html",
+      controller: "MapController as main"
+    })
    
 
   $urlRouterProvider.otherwise("/");
