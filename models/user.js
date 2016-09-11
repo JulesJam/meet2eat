@@ -7,7 +7,8 @@ var userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique:true},
   passwordHash: String,
   avatar: String,
-  facebookId: String
+  facebookId: String,
+  locationHome: {}
 });
 
 userSchema.pre('validate', function(next){

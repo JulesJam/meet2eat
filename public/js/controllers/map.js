@@ -6,15 +6,32 @@
 console.log("linked");
 
 
+MapController.$inject = ["User", "$scope"]
+function MapController(User, $scope){
+  
+  var users = User.query();
+  var places =[];
 
-function MapController(){
+  User.query().$promise.then(function(data){
+    $scope.singleUser = data[0]; 
+    console.log(data[0].username); 
+    for (i=0; i< data.length-1; i++){
+      places.push("{"+data[i].username+", position: { lat:"+data[i].locationHome[0].lat+", lng:"+data[i].locationHome[0].lng+"}}");
+    
+    }
+    this.places = places;
+    console.log(this.places);
+  });
+
   this.mapCenter = { lat: 51.4882, lng: -0.0193};
-  this.places = [
-    { name: "A", position: { lat:51.4882, lng:-0.0193 } },
-    { name: "B", position: { lat:51.5346, lng:-0.1000 } },
-    { name: "C", position: { lat:51.6578, lng:-0.1233 } },
-    { name: "D", position: { lat:51.4000, lng:-0.0010 } },
-  ];
+ 
+
+  // this.places = [
+  //   { name: "A", position: { lat:51.4882, lng:-0.0193 } },
+  //   { name: "B", position: { lat:51.5346, lng:-0.1000 } },
+  //   { name: "C", position: { lat:51.6578, lng:-0.1233 } },
+  //   { name: "D", position: { lat:51.4000, lng:-0.0010 } },
+  // ];
   
               
  
