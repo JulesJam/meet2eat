@@ -1,6 +1,18 @@
 <h1>{{ usersShow.selected.username}}</h1>
 
-<p>This is the users details</p>
+<div class="card">
+  <img class="card-img-top" src="../images/no_image.png" alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">{{userShow.selected.username}}</h4>
+    <h6>Is {{usersShow.selected.age}} and Spends most of the day {{usersShow.selected.occupation}}
+    <ul>
+      <li>Lives in {{usersShow.selected.locationNameHome}}</li> 
+      <li>Works near {{usersShow.selected.locationNameWork}}</li>
+      <li>Today {{usersShow.selected.username}} would like to eat Indian at around 7pm </li>
+    </ul>
+    <button ui-sref="users" class="btn btn-primary">Back</button>
+  </div>
+</div>
 
-<button ui-sref="users" class="btn btn-primary">Back</button>
+
 <button ui-sref="usersEdit({ id: usersShow.selected._id})" class="btn btn-primary">Edit</button>

@@ -2,11 +2,54 @@
 
 <form ng-submit="register.submit()">
   <div class="form-group">
-    <input type="text" name="username" class="form-control" ng-model="register.user.username" placeholder="Last name">
+    <input type="text" name="username" class="form-control" ng-model="register.user.username" placeholder="Username">
   </div>
   <div class="form-group">
     <input type="email" name="email" class="form-control" ng-model="register.user.email" placeholder="Email">
   </div>
+  <div class="form-group">
+    <input type="email" name="emailConfirmation" class="form-control" ng-model="register.user.emailconfirmation" placeholder="Confirm Email Address">
+  </div>
+  <div class="form-group">
+    <input type="text" name="locationHome" class="form-control" ng-model="register.user.locationNameHome" placeholder="Enter your home town or postcode">
+  </div>
+  <div class="form-group">
+    <input type="text" name="locationWork" class="form-control" ng-model="register.user.locationNameWork" placeholder="Enter the town or postcode of your main work location">
+  </div>
+
+  <div class="form-group">
+    <input type="number" name="age" class="form-control" ng-model="register.user.age" placeholder="Enter your age in years">
+  </div>
+  <div class="form-group">
+    <input type="occupation" name="occupation" class="form-control" ng-model="register.user.occupation" placeholder="What fills your day....">
+  </div>
+
+  <div class="form-group">
+    <h6>Where would you prefer to eat....</h6>
+    <h6>MacDonalds <input type="range" id="foodPreference" name="foodPreference" value="50" ng-model="register.user.foodPreference"> Michelin Restaurant  {{register.user.foodPreference}}</h6>
+  </div>
+  <div class="form-group">
+    <h6>What would you prefer to drink....</h6>
+    <h6>Pint of larger <input type="range" id="drinkPreference" name="drinkPreference" value="50" ng-model="register.user.drinkPreference"> Glass of Champagne{{register.user.drinkPreference}}</h6>
+  </div>
+
+  <div class="form-group">
+    <h6>What would you prefer to see at the cinema....</h6>
+    <h6>Jason Bourne<input type="range" id="filmePreference" name="filmPreference" value="50" ng-model="register.user.filmPreference"> Bridget Jones ...{{register.user.filmPreference}}</h6>
+  </div>
+
+  <div class="form-group">
+    <h6>What would you prefer to read....</h6>
+    <h6>Biography of a world leader<input type="range" id="bookPreference" name="bookPreference" value="50" ng-model="register.user.bookPreference"> Confessions of a Shopaholic (Sopie Kinsella){{register.user.bookPreference}}</h6>
+  </div>
+
+  <div class="form-group">
+    <h6>What would you prefer to do on a Saturday Night....</h6>
+    <h6>Go clubbing<input type="range" id="entertainmentPreference" name="entertainmentPreference" value="50" ng-model="register.user.entertainmentPreference"> Go to the theatre{{register.user.entertainmentPreference}}</h6>
+  </div>
+   
+
+
   <div class="form-group">
     <input type="password" name="password" class="form-control" ng-model="register.user.password" placeholder="Password">
   </div>
