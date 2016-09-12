@@ -8,19 +8,21 @@ console.log("linked");
 
 MapController.$inject = ["User", "$scope"]
 function MapController(User, $scope){
-  
+  var self = this;
   var users = User.query();
-  var places =[];
+  this.places = [];
 
   User.query().$promise.then(function(data){
-    $scope.singleUser = data[0]; 
-    console.log(data[0].username); 
     for (i=0; i< data.length-1; i++){
-      places.push("{"+data[i].username+", position: { lat:"+data[i].locationHome[0].lat+", lng:"+data[i].locationHome[0].lng+"}}");
-    
+
+      if(data[i].locationHome) {
+        self.places.push({
+          name: data[i].username,
+          position: { lat: data[i].locationHome[0].lat, lng: data[i].locationHome[0].lng }
+        });
+      }
     }
-    this.places = places;
-    console.log(this.places);
+    // console.log(this.places);
   });
 
   this.mapCenter = { lat: 51.4882, lng: -0.0193};
@@ -40,7 +42,7 @@ function MapController(User, $scope){
 Gmap.$inject = ['$timeout'];
 
 function Gmap($timeout) {
-  return{
+  return {
     restrict: 'E',
     replace: true,
     template: '<div class="google-map"></div>',
@@ -61,7 +63,14 @@ function Gmap($timeout) {
         zoom: 10
       });
 
-      if(scope.markers){
+      scope.$watch('markers.length', updateMarkers);
+
+      function updateMarkers() {
+
+        markers.forEach(function(marker) {
+          marker.setMap(null); // removes marker from map
+        });
+
         markers = scope.markers.map(function(place){
           var marker = new google.maps.Marker({
             position: place.position,
@@ -75,6 +84,10 @@ function Gmap($timeout) {
 
           return marker;
         });
+      }
+
+      if(scope.markers){
+        updateMarkers();
       }
     }
   }

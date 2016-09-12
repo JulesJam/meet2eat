@@ -8,7 +8,20 @@ var userSchema = new mongoose.Schema({
   passwordHash: String,
   avatar: String,
   facebookId: String,
-  locationHome: {}
+  locationHome: {},
+  locationWork: {},
+  locationCurrent:{},
+  locationChosen:{},
+  age: Number,
+  occupation: String,
+  foodPreference: Number,
+  drinkPreference: Number,
+  filmPreference: Number,
+  bookPreference: Number,
+  entertainmentPreference:Number,
+  dinningPreferences:{},
+  activeMeet: Boolean,
+  activeStart: Date
 });
 
 userSchema.pre('validate', function(next){

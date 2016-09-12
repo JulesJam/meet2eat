@@ -2,7 +2,12 @@ angular
   .module("Meet2Eat")
   .controller("UsersController", UsersController);
 
-UsersController.$inject = ["User"]
-function UsersController(User) {
+UsersController.$inject = ["User", "$state"]
+
+function UsersController(User, $state) {
+  
   this.all = User.query();
+
 }
+
+
