@@ -72,24 +72,18 @@ function Gmap($timeout) {
             age: place.age
           });
 
-          // var infoWindow = new google.maps.InfoWindow({
-          //   content: "This is the content",
-          //   disableAutopan: true,
-          // });
-
-          marker.addListener('click', function() {
-            console.log("Ooooh, you clicked me! "+this.name+" aged"+ this.age);
+          marker.infoWindow = new google.maps.InfoWindow({
+            content: "This is the content",
+            disableAutopan: true,
           });
 
-
-          // marker.addListener('mouseover', function() {
-          //   infowindow.open(map, marker);
-          // });
+          marker.addListener('click', function() {
+            markers.forEach(function(marker) {
+              marker.infoWindow.close();
+            });
             
-              
-          // marker.addListener('mouseout', function() {
-          //   infowindow.close();
-          // });
+            this.infoWindow.open(map, this);
+          });
 
           return marker;
         });

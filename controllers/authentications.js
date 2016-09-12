@@ -13,7 +13,6 @@ function register(req, res){
     };
     var payload = { _id: user._id, username: user.username };
     var token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
-    console.log(token);
     return res.status(200).json({
       message: "Success",
       token: token

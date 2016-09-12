@@ -4,23 +4,35 @@ angular
 
 RegisterController.$inject = ["User", "$state", "$rootScope"]
 function RegisterController(User, $state, $rootScope){
+  var self = this;
+  console.log("hello2" +this.user);
   this.user = {};
+
   this.submit = function(){
-    User.register(this.user, function(res){
-      $rootScope.$broadcast("loggedIn");
-      $state.go("home");
+    console.log(this.user.locationNameHome);
+    var address = this.user.locationNameHome +" UK";
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({'address':address}, function(results, status){
+
+      if (status == 'OK'){
+        var lat = ((results[0].geometry.viewport.f.b + results[0].geometry.viewport.f.f)/2);
+        var lng = ((results[0].geometry.viewport.b.b + results[0].geometry.viewport.b.f)/2);
+        self.user.locationHome = {lat: lat, lng: lng};
+        User.register(self.user, function(res){
+          $rootScope.$broadcast("loggedIn");
+          $state.go("home");
+
+        });
+      }
+      else{console.log(status + "it went wrong" + results);
+      }
+
     });
+    
+ 
   }
 
-  this.select = function () {
-      var x = document.getElementById("myRange").value;
-      document.getElementById("demo").innerHTML = x;
-      var y = document.getElementById("myRange1").value;
-      document.getElementById("demo1").innerHTML = y;
-      var z = document.getElementById("myRange2").value;
-      document.getElementById("demo2").innerHTML = z;
-      var w = document.getElementById("myRange3").value;
-      document.getElementById("demo3").innerHTML = w;
-  }
+ 
 }
 
