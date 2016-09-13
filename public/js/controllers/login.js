@@ -4,16 +4,29 @@ angular
 
 
 
-LoginController.$inject =["User", "$state", "$rootScope"];
-function LoginController(User, $state, $rootScope){
+LoginController.$inject =["User", "$state", "$rootScope", "$auth"];
+function LoginController(User, $state, $rootScope, $auth){
 
   this.credentials ={};
 
-  this.submit = function submit(){
-    User.login(this.credentials, function(res){
+
+  this.authenticate = function(provider) {
+    console.log("Facebook?", provider)
+    $auth.authenticate(provider)
+    .then(function(){
       $rootScope.$broadcast("loggedIn");
       $state.go('users');
-      console.log(res);
+    });
+  }
+
+  this.submit = function submit(){
+    $auth.login(this.credentials, {
+      url:"api/login"
+    }).then(function(){
+      $rootScope.$broadcast("loggedIn");
+      $state.go('users');
+      self.currentUser = $auth.getPayload();
+  
     });
   };
 

@@ -2,8 +2,8 @@ angular
   .module("Meet2Eat")
   .controller("RegisterController", RegisterController);
 
-RegisterController.$inject = ["User", "$state", "$rootScope"]
-function RegisterController(User, $state, $rootScope){
+RegisterController.$inject = ["User", "$state", "$rootScope", "$auth"]
+function RegisterController(User, $state, $rootScope, $auth){
   var self = this;
   console.log("hello2" +this.user);
   this.user = {};
@@ -19,9 +19,13 @@ function RegisterController(User, $state, $rootScope){
         var lat = ((results[0].geometry.viewport.f.b + results[0].geometry.viewport.f.f)/2);
         var lng = ((results[0].geometry.viewport.b.b + results[0].geometry.viewport.b.f)/2);
         self.user.locationHome = {lat: lat, lng: lng};
-        User.register(self.user, function(res){
+        
+        $auth.signup(this.user,{
+          url: "/api/register"
+        })
+       .then(function(){
           $rootScope.$broadcast("loggedIn");
-          $state.go("home");
+          $state.go("login");
 
         });
       }

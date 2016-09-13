@@ -29,7 +29,7 @@ function ChatController(User, $state, $window, $scope, $rootScope, $auth){
   socket.on('connect', function() {
 
     socket
-      .emit('authenticate', { token: "dave"})
+      .emit('authenticate', { token: $auth.getToken()})
       .on('authenticated', function() {
         $rootScope.$applyAsync(function() {
           self.connected = true;

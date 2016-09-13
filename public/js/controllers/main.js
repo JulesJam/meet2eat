@@ -17,26 +17,24 @@ function MainController(TokenService, $state, $rootScope, $auth) {
 
   var self = this;
 
-  this.currentUser = TokenService.decodeToken();
+
+
+  this.currentUser =$auth.getPayload();
   this.errorMessage = null;
 
+
+
   this.logout = function logout() {
-    TokenService.clearToken();
+    $auth.logout();
     this.currentUser = null;
     $state.go("login");
   }
+    
 
-
-  this.authenticate = function(provider) {
-    console.log("Facebook?", provider);
-    $auth.authenticate(provider);
-    $rootScope.$broadcast("loggedIn");
-    $state.go('users');
-  }
 
 
   $rootScope.$on("loggedIn", function() {
-    self.currentUser = TokenService.decodeToken();
+    self.currentUser = $auth.getPayload();
   });
 
   $rootScope.$on("unauthorized", function() {
