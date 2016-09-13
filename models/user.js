@@ -22,12 +22,13 @@ var userSchema = new mongoose.Schema({
   bookPreference: String,
   dinningPreferences:[],
   activeMeet: Boolean,
-  activeStart: Date
+  activeStart: Date,
+  chatRoom: String
 });
 
 userSchema.pre('validate', function(next){
   
-  if(!this._password && !this.facebookId){
+  if(this.isNew && !this._password && !this.facebookId){
     this.invalidate('password', "A password is required");
   }
   next();
@@ -36,7 +37,7 @@ userSchema.pre('validate', function(next){
 
 
 
-userSchema.set ('toJson', {
+userSchema.set ('toJSON', {
   transform: function (document, json){
     delete json.passwordHash;
     delete json.__v;

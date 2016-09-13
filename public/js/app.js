@@ -40,6 +40,13 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl:"templates/usersShow.html",
       controller: "UsersShowController as usersShow"
     })
+
+    .state("chat", {
+       url: "/chat/:id",
+       templateUrl: "/templates/chat.html",
+       controller: "ChatController as chat"
+    })
+
    .state("usersEdit",{
         url:"/users/:id/edit",
         templateUrl:"templates/usersEdit.html",

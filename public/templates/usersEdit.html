@@ -3,57 +3,57 @@
 
 <form ng-submit="usersEdit.save()">
   <div class="form-group">
-    <input type="text" name="username" class="form-control" ng-model="usersEdit.selected.username" value = {{usersEdit.selected.username}}>
+    <input type="text" name="username" class="form-control" ng-model="usersEdit.selected.username">
   </div>
   <div class="form-group">
-    <input type="email" name="email" class="form-control" ng-model="usersEdit.selected.email" value={{usersEdit.selected.email}}>
+    <input type="email" name="email" class="form-control" ng-model="usersEdit.selected.email" >
   </div>
   <div class="form-group">
     <input type="email" name="emailConfirmation" class="form-control" ng-model="usersEdit.selected.emailconfirmation" placeholder="Confirm Email Address">
   </div>
   <div class="form-group">
-    <input type="text" name="locationHome" class="form-control" ng-model="usersEdit.selected.locationNameHome" value={{usersEdit.selected.locationNameHome}}>
+    <input type="text" name="locationHome" class="form-control" ng-model="usersEdit.selected.locationNameHome" >
   </div>
   <div class="form-group">
-    <input type="text" name="locationWork" class="form-control" ng-model="usersEdit.selected.locationNameWork" value={{usersEdit.selected.locationNameWork}}>
+    <input type="text" name="locationWork" class="form-control" ng-model="usersEdit.selected.locationNameWork" >
   </div>
 
 
   <div class="form-group">
-    <input type="occupation" name="occupation" class="form-control" ng-model="usersEdit.slected.occupation" value={{usersEdit.selected.occupation}}>
+    <input type="occupation" name="occupation" class="form-control" ng-model="usersEdit.selected.occupation" placeholder="occupation">
   </div>
 
   <div class="form-group">
     <h6>Where would you prefer to eat....</h6>
-    <h6>MacDonalds <input type="range" id="editFoodPereference" name="foodPreference"  ng-model="usersEdit.selected.foodPreference"value={{usersEdit.selected.foodPreference}} > Michelin Restaurant  {{usersEdit.selected.foodPreference}}</h6>
+    <h6>MacDonalds <input type="range" id="editFoodPereference" name="foodPreference"  ng-model="usersEdit.selected.foodPreference" > Michelin Restaurant  {{usersEdit.selected.foodPreference}}</h6>
   </div>
   <div class="form-group">
     <h6>What would you prefer to drink....</h6>
-    <h6>Pint of larger <input type="range" id="editDrinkPreference" name="drinkPreference" ng-model="usersEdit.selected.drinkPreference" value= {{usersEdit.selected.drinkPreference}}> Glass of Champagne {{usersEdit.selected.drinkPreference}}</h6>
+    <h6>Pint of larger <input type="range" id="editDrinkPreference" name="drinkPreference" ng-model="usersEdit.selected.drinkPreference" > Glass of Champagne {{usersEdit.selected.drinkPreference}}</h6>
   </div>
 
   <div class="form-group">
     <h6>What would you prefer to see at the cinema....</h6>
-    <h6>Jason Bourne<input type="range" id="editFilmPreference" name="filmPreference" value="{{usersEdit.selected.filmPreference}}" ng-model="usersEdit.filmPreference"> Bridget Jones ...{{usersEdit.selected.filmPreference}}</h6>
+    <h6>Jason Bourne<input type="range" id="editFilmPreference" name="filmPreference"  ng-model="usersEdit.selected.filmPreference"> Bridget Jones ...{{usersEdit.selected.filmPreference}}</h6>
   </div>
 
   <div class="form-group">
     <h6>What would you prefer to read....</h6>
-    <h6>Biography of a world leader<input type="range" id="editBookPreference" name="bookPreference" value="{{usersEdit.selected.bookPreference}}" ng-model="usersEdit.bookPreference"> Confessions of a Shopaholic (Sopie Kinsella){{usersEdit.selected.bookPreference}}</h6>
+    <h6>Biography of a world leader<input type="range" id="editBookPreference" name="bookPreference" ng-model="usersEdit.selected.bookPreference"> Confessions of a Shopaholic (Sopie Kinsella){{usersEdit.selected.bookPreference}}</h6>
   </div>
 
   <div class="form-group">
     <h6>What would you prefer to do on a Saturday Night....</h6>
-    <h6>Go clubbing<input type="range" id="editEntertainmentPreference" name="entertainmentPreference" value="{{usersEdit.selected.bookPreference}}" ng-model="usersEdit.entertainmentPreference"> Go to the theatre{{usersEdit.selected.entertainmentPreference}}</h6>
+    <h6>Go clubbing<input type="range" id="editEntertainmentPreference" name="entertainmentPreference" ng-model="usersEdit.selected.entertainmentPreference"> Go to the theatre{{usersEdit.selected.entertainmentPreference}}</h6>
   </div>
    
 
 
   <div class="form-group">
-    <input type="password" name="password" class="form-control" ng-model="usersEdit.password" placeholder="Password">
+    <input type="password" name="password" class="form-control" ng-model="usersEdit.selected.password" placeholder="Password">
   </div>
   <div class="form-group">
-    <input type="password" name="passwordConfirmation" class="form-control" ng-model="usersEdit.passwordConfirmation" placeholder="Password confirmation">
+    <input type="password" name="passwordConfirmation" class="form-control" ng-model="usersEdit.selected.passwordConfirmation" placeholder="Password confirmation">
   </div>
 
   <input type="submit" value="Submit" class="btn btn-primary">

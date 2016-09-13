@@ -28,8 +28,11 @@ router.route('/users/:id')
   //.all(secureRoute)
   .get(usersController.show)
   .put(usersController.update)
-  .patch(usersController.update)
+  // .patch(usersController.update)
   .delete(usersController.delete);
+
+router.route('/chat/:id')
+  .get(usersController.show);
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);

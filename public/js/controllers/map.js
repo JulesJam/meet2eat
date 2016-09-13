@@ -69,11 +69,14 @@ function Gmap($timeout) {
             position: place.position,
             map: map,
             name: place.name,
-            age: place.age
-          });
+            age: place.age,
+            label: "\xE2\x9C\x88",
+            icon:{
+             url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
+            });
 
           marker.infoWindow = new google.maps.InfoWindow({
-            content: "This is the content",
+            content: place.name+" aged "+place.age+" looking to eat",
             disableAutopan: true,
           });
 
@@ -81,7 +84,7 @@ function Gmap($timeout) {
             markers.forEach(function(marker) {
               marker.infoWindow.close();
             });
-            
+
             this.infoWindow.open(map, this);
           });
 

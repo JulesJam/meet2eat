@@ -24,7 +24,8 @@ User.create([
     bookPreference: "45",
     entertainmentPreference: "66",
     dinningPreferences:["Indian", "Chinese"],
-    activeMeet: true
+    activeMeet: true,
+    chatRoom:"room1"
     },{
     username: "susan",
     email: "susan@mail",
@@ -42,7 +43,8 @@ User.create([
     bookPreference: "25",
     entertainmentPreference: "25",
     dinningPreferences:["French", "Tapas"],
-    activeMeet: true
+    activeMeet: true,
+    chatRoom:"room1"
   },{
     username: "eifion",
     email: "eifion@mail",
@@ -78,7 +80,27 @@ User.create([
     bookPreference: "89",
     entertainmentPreference: "66",
     dinningPreferences:["Korean", "Chinese"],
-    activeMeet: true
+    activeMeet: true,
+    chatRoom:"room2"
+  },{
+    username: "sarah",
+    email: "sarah@mail",
+    password: "password",
+    passwordConfirmation: "password",
+    occupation: "Arranging flowers formhotes",
+    age: 28,
+    locationNameHome: "Parsons Green",
+    locationHome: {lat:51.356, lng:-0.1473},
+    locationNameWork: "Aldgate",
+    locationWork: {lat:51.2535, lng:-0.1534},
+    foodPreference: "55",
+    drinkPreference: "67",
+    filmPreference: "65",
+    bookPreference: "89",
+    entertainmentPreference: "66",
+    dinningPreferences:["Mexican", "Chinese"],
+    activeMeet: true,
+    chatRoom:"room2"
   }
 ], function(err, users) {
   console.log(users);

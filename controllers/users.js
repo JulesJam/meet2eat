@@ -23,11 +23,23 @@ function usersShow(req, res){
 }
 
 function usersUpdate(req, res){
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true},
-    function(err, user){
-    if(err) return res.satus(400).json(err);
-    return res.status(200).json(user);
-  });
+
+  console.log(req.body);
+  
+  user = User.findById(req.params.id)
+
+    .then(function(user){
+      console.log("update >>>", req.params.id, "reqbody", req.body);
+      for(key in req.body) user[key] = req.body[key];
+      return user.save();
+    })
+    .then(function(user){
+      res.status(200).json(user);
+    })
+    .catch(function(err){
+      console.log("update error",err);
+      res.status(500).json(err);
+    })
 }
 
 function usersDelete(req, res){
