@@ -25,13 +25,15 @@ var server = app.listen(port, function(){
 
 var io = require('socket.io').listen(server);
 var users = {};
+var buffersecret = new Buffer(secret, "base64");
 
 io.on('connection', socketioJwt.authorize({
   secret: secret,
-  timeout: 5000
+  timeout: 15000
 })).on('authenticated', function(socket) {
+  console.log('hello! ' + socket.decoded_token.username);
   users[socket.decoded_token.username] = socket;
-  console.log('authenticated',+ socket.decoded_token.name);
+  console.log('authenticated'+ socket);
 
   socket.on('message', function(data) {
     io.sockets.emit('message', data);

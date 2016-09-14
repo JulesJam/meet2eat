@@ -39,6 +39,7 @@ function ChatController(User, $state, $window, $scope, $rootScope, $auth){
       .on('unauthorized', function() {
         $rootScope.$applyAsync(function() {
           self.connected = false;
+          console.log("Not authorised to connect");
         });
       });    socket.on('disconnect', function(){
       $rootScope.$applyAsync(function() {
