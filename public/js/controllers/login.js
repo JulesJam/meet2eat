@@ -15,7 +15,7 @@ function LoginController(User, $state, $rootScope, $auth){
     $auth.authenticate(provider)
     .then(function(){
       $rootScope.$broadcast("loggedIn");
-      $state.go('users');
+      $state.go('meetCreator');
     });
   }
 
@@ -24,7 +24,7 @@ function LoginController(User, $state, $rootScope, $auth){
       url:"api/login"
     }).then(function(){
       $rootScope.$broadcast("loggedIn");
-      $state.go('users');
+      $state.go('meetCreator');
       self.currentUser = $auth.getPayload();
   
     });

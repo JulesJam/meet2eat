@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var s3 = require('../config/s3');
 var beautifulUnique = require('mongoose-beautiful-unique-validation');
 
 var userSchema = new mongoose.Schema({
@@ -42,7 +43,8 @@ userSchema.set ('toJSON', {
     delete json.passwordHash;
     delete json.__v;
     return json;
-  }
+  },
+  getters: true
 });
 
 
@@ -72,6 +74,16 @@ userSchema.path('passwordHash')
       }
     }
   });
+
+userSchema.path('avatar')
+  .get(function(avatar) {
+      console.log(s3.endpoint.href + process.env.AWS_BUCKET_NAME + "/" + avatar);
+      return s3.endpoint.href + process.env.AWS_BUCKET_NAME + "/" + avatar;
+    })
+    .set(function(avatar) {
+      console.log("s32");
+      return avatar.split('/').splice(-1)[0];
+    });
 
 userSchema.methods.validatePassword = function(password){
   return bcrypt.compareSync(password, this.passwordHash);

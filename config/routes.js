@@ -1,6 +1,7 @@
 var router  = require('express').Router();
 var jwt     = require('jsonwebtoken');
 var secret  = require('../config/tokens').secret;
+var upload = require('./upload');
 
 var usersController = require('../controllers/users');
 var authController  = require('../controllers/authentications');
@@ -21,13 +22,13 @@ function secureRoute(req, res, next){
 router.route('/users')
   // .all(secureRoute)
   .get(usersController.index)
-  .post(usersController.create);
+  .post(upload.single('avatar'), usersController.create);
 
 
 router.route('/users/:id')
   //.all(secureRoute)
   .get(usersController.show)
-  .put(usersController.update)
+  .put( upload.single('avatar'),usersController.update)
   // .patch(usersController.update)
   .delete(usersController.delete);
 

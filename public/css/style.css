@@ -1,5 +1,10 @@
-body {
-  background-color: red;
+body{
+  position: relative;
+}
+
+.card {
+  background-color:#a93a37;
+
 }
 
 .card-img-top{
@@ -11,4 +16,16 @@ body {
   width: 500px;
   height: 500px;
   margin:50px auto;
+}
+
+.bottom-logo{
+  margin-left:5%;
+  max-width: 50%;
+  z-index: -100;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+#creator{
+  margin: 0 auto;
 }

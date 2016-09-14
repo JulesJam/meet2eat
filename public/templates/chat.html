@@ -11,7 +11,7 @@
       <li>Today {{chat.selected.username}} would like to eat Indian at around 7pm </li>
     </ul>
     <ul>
-      <li ng-repeat="message in chat.all track by $index">{{message.username}} said {{ message.message }}</li>
+      <li ng-repeat="message in chat.all track by $index">{{chat.sendername}} said {{ message.message }}</li>
     </ul>
 
    

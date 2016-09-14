@@ -13,6 +13,9 @@ function ChatController(User, $state, $window, $scope, $rootScope, $auth){
   
   this.connected = false;
   var username = "";
+  this.sendername = $auth.getPayload().username;
+
+  console.log ("sender name",this.sendername);
 
   
 
@@ -53,10 +56,9 @@ function ChatController(User, $state, $window, $scope, $rootScope, $auth){
   this.all = [];
 
 
-  this.sendMessage = function(username) {
+  this.sendMessage = function() {
     console.log("trying to send",this.selected.username);
-    socket.emit("pm", { message: this.message, username: this.selected.username});
-    alert(this.message + this.selected.username);
+    socket.emit("pm", { message: this.message, username: this.selected});
     this.message = null;
   }
 

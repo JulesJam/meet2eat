@@ -1,7 +1,7 @@
 var express   = require('express');
 var app       = express();
 var secret = require('./config/tokens').secret;
-
+var morgan = require('morgan');
 var socketioJwt = require('socketio-jwt');
 var mongoose  = require('mongoose');
 var bodyParser= require('body-parser');
@@ -33,7 +33,7 @@ io.on('connection', socketioJwt.authorize({
 })).on('authenticated', function(socket) {
   console.log('hello! ' + socket.decoded_token.username);
   users[socket.decoded_token.username] = socket;
-  console.log('authenticated'+ socket);
+  console.log('authenticated'+ socket.id);
 
   socket.on('message', function(data) {
     io.sockets.emit('message', data);
@@ -65,6 +65,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', routes);
 
 app.use(express.static('public'));
+
+
 
 
 

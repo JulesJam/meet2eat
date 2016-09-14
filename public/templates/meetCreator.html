@@ -1,0 +1,29 @@
+<h1>Set Up A Meet</h1>
+<p>To let other people know you would like to meet up please select where and when you would like to meet up and what kind of food you would like to eat.</p>
+<form id = "creator" name="meetCreator">
+  <label>
+    <input type="radio" ng-model="meet.locationChoose" value="red">
+    Near Work {{meet.home.locationNameWork}}
+  </label><br>
+  <label>
+    <input type="radio" ng-model="meet.locationChoose" ng-value="homeLocation">
+    Near Home {{meet.home.locationNameHome}}
+  </label><br>
+  <label>
+    <input type="radio" ng-model="meet.locationChoose" value="currentLocation">
+    Near current location {{meet.currentLocation}}
+    
+  </label><br>
+
+  <label for="singleSelect"> Meet for..: </label><br>
+    <select name="singleSelect" ng-model="data.singleSelect">
+      <option value="breakfast">Breakfast</option>
+      <option value="brunch">Brunch</option>
+      <option value="lunch">Lunch</option>
+      <option value="dinner">Dinner</option>
+    </select>
+  
+ </form>
+
+<img class="bottom-logo" ng-src=" 
+https://s3-eu-west-1.amazonaws.com/meetoeat/meetoeat_background.png" alt="image of people in a restaurant">

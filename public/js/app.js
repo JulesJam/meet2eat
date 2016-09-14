@@ -41,6 +41,12 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: "UsersShowController as usersShow"
     })
 
+    .state("meetCreator",{
+      url:"/meetCreator",
+      templateUrl:"templates/meetCreator.html",
+      controller: "MeetCreatorController as meet"
+    })
+
     .state("chat", {
        url: "/chat/:id",
        templateUrl: "/templates/chat.html",

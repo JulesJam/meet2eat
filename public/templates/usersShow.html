@@ -1,9 +1,9 @@
 <h1>{{ usersShow.selected.username}}</h1>
 
 <div class="card">
-  <img class="card-img-top" src="../images/no_image.png" alt="Card image cap">
+  <img class="card-img-top" ng-src="{{usersShow.selected.avatar}}" alt="Card image cap">
   <div class="card-block">
-    <h4 class="card-title">{{userShow.selected.username}}</h4>
+    <h4 class="card-title">{{usersShow.selected.username}}</h4>
     <h6>Is {{usersShow.selected.age}} and Spends most of the day {{usersShow.selected.occupation}}
     <ul>
       <li>Lives in {{usersShow.selected.locationNameHome}}</li> 

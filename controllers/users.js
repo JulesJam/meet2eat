@@ -24,12 +24,11 @@ function usersShow(req, res){
 
 function usersUpdate(req, res){
 
-  console.log(req.body);
+  if(req.file) req.body.avatar = req.file.key;
   
   user = User.findById(req.params.id)
 
     .then(function(user){
-      console.log("update >>>", req.params.id, "reqbody", req.body);
       for(key in req.body) user[key] = req.body[key];
       return user.save();
     })
@@ -48,7 +47,6 @@ function usersDelete(req, res){
     return res.status(204).send();
   });
 }
-
 
 
 module.exports = {
