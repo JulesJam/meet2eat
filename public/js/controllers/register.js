@@ -19,8 +19,8 @@ function RegisterController(User, $state, $rootScope, $auth){
         var lat = ((results[0].geometry.viewport.f.b + results[0].geometry.viewport.f.f)/2);
         var lng = ((results[0].geometry.viewport.b.b + results[0].geometry.viewport.b.f)/2);
         self.user.locationHome = {lat: lat, lng: lng};
-        
-        $auth.signup(this.user,{
+        console.log("user.. ", self.user);
+        $auth.signup(self.user,{
           url: "/api/register"
         })
        .then(function(){
@@ -29,7 +29,7 @@ function RegisterController(User, $state, $rootScope, $auth){
 
         });
       }
-      else{console.log(status + "it went wrong" + results);
+      else{console.log(status + " it went wrong" + results);
       }
 
     });

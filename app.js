@@ -36,12 +36,12 @@ io.on('connection', socketioJwt.authorize({
   console.log('authenticated'+ socket.id);
 
   socket.on('message', function(data) {
-    io.sockets.emit('message', data);
+    io.socket.emit('message', data);
   });
 
   socket.on('pm', function(data) {
     users[socket.decoded_token.username].emit('pm', data);
-    socket.emit('pm', data);
+    socket.broadcast.emit('pm', data);
   });
 
   socket.on('disconnect', function() {

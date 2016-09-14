@@ -58,14 +58,17 @@ function ChatController(User, $state, $window, $scope, $rootScope, $auth){
 
   this.sendMessage = function() {
     console.log("trying to send",this.selected.username);
-    socket.emit("pm", { message: this.message, username: this.selected});
+    socket.emit("pm", { message: this.message, username: this.sendername, recipient: this.selected.username});
     this.message = null;
   }
 
   socket.on('pm', function(message) {
-      console.log(message);
+      
       $rootScope.$evalAsync(function() {
+        console.log("this is the message from",message.username, "to",message.recipient);
+       
         self.all.push(message);
+       
       });
     });
   }

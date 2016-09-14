@@ -8,10 +8,22 @@ function usersIndex (req, res){
 }
 
 function usersCreate(req, res){
-  User.create(req.body, function(err,user){
-    if(err) return res.status(400).json(err);
-    return res.status(201).json(user);
-  });
+
+  console.log(req.file);
+  if(req.file) req.body.avatar = req.file.key;
+
+  User.create(req.body) 
+    .then(function(user){
+      return User.findById(user._id)
+    })
+    .then(function(film){
+      res.status(201).json(user);
+    })
+    .catch(function(err){
+      res.status(500).json(err);
+    })
+
+  
 }
 
 function usersShow(req, res){

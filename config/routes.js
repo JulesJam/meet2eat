@@ -35,7 +35,8 @@ router.route('/users/:id')
 router.route('/chat/:id')
   .get(usersController.show);
 
-router.post('/register', authController.register);
+router.route('/register')
+  .post(upload.single('avatar'), authController.register);
 router.post('/login', authController.login);
 router.post('/facebook', facebookController.login);
 

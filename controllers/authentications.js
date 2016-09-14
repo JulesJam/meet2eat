@@ -4,6 +4,7 @@ var secret  = require('../config/tokens').secret;
 
 
 function register(req, res){
+
   console.log(req.body);
   User.create(req.body, function(err, user) {
     if(err) {

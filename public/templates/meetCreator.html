@@ -1,8 +1,9 @@
 <h1>Set Up A Meet</h1>
 <p>To let other people know you would like to meet up please select where and when you would like to meet up and what kind of food you would like to eat.</p>
 <form id = "creator" name="meetCreator">
+  <h5>Where...</h5>
   <label>
-    <input type="radio" ng-model="meet.locationChoose" value="red">
+    <input type="radio" ng-model="meet.locationChoose" value="workLocation">
     Near Work {{meet.home.locationNameWork}}
   </label><br>
   <label>
@@ -14,14 +15,32 @@
     Near current location {{meet.currentLocation}}
     
   </label><br>
+  <h5>When...</h5>
+  <label>
+    <input type="radio" ng-model="meet.dayChoose" value="Today">
+    Today
+  </label><br>
+  <label>
+    <input type="radio" ng-model="meet.dayChoose" ng-value="Tomorrow">
+    Tomorrow
+  </label><br>
 
-  <label for="singleSelect"> Meet for..: </label><br>
+  <label for="singleSelect"> Meet for... </label><br>
     <select name="singleSelect" ng-model="data.singleSelect">
       <option value="breakfast">Breakfast</option>
       <option value="brunch">Brunch</option>
       <option value="lunch">Lunch</option>
       <option value="dinner">Dinner</option>
     </select>
+
+    <label>Fancy meeting up in a group...
+      <input type="checkbox" ng-model="meet.group"
+               ng-true-value=true ng-false-value=false>
+    </label><br>
+    <label ng-hide="!meet.group">Group Size
+    <input type="number" name="meet.groupNumber" ng-model="meet.groupnumber"  class="form-control">
+    </label>
+
   
  </form>
 
