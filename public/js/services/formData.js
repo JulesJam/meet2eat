@@ -10,7 +10,7 @@ function formData() {
       angular.forEach(data, function(value, key) {
         if(value) {
           if(value._id) value = value._id;
-          if(!!key.match(/(locationHome|locationWork|locationCurrent)/)) value = JSON.stringify(value);
+          if(!!key.match(/(locationHome|locationWork|locationCurrent|locationChosen)/)) value = JSON.stringify(value);
           if(!key.match(/^\$/)) formData.append(key, value);
         }
       });

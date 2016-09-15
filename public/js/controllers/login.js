@@ -26,7 +26,7 @@ function LoginController(User, $state, $rootScope, $auth){
     }).then(function(){
       $rootScope.$broadcast("loggedIn");
       this.currentUser = $auth.getPayload();
-      User.update({id: self.currentUser}, {loggedIn: true
+      User.update({id: self.currentUser._id}, {loggedIn: true
       });
       $state.go('meetCreator');
       self.currentUser = $auth.getPayload();

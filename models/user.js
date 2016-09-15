@@ -23,7 +23,7 @@ var userSchema = new mongoose.Schema({
   drinkPreference: String,
   filmPreference: String,
   bookPreference: String,
-  meetCuisines:[],
+  meetCuisines: String,
   meetDay: String,
   meetMeal: String,
   meetGroup: {type: Number, value: 0},

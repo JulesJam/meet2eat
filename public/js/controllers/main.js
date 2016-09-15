@@ -12,8 +12,8 @@ function oAuthConfig($authProvider){
   });
 }
 
-MainController.$inject = ["TokenService", "$state", "$rootScope", "$auth"];
-function MainController(TokenService, $state, $rootScope, $auth) {
+MainController.$inject = ["User", "TokenService", "$state", "$rootScope", "$auth"];
+function MainController(User, TokenService, $state, $rootScope, $auth) {
 
   var self = this;
 
@@ -25,9 +25,10 @@ function MainController(TokenService, $state, $rootScope, $auth) {
 
 
   this.logout = function logout() {
+    User.update({id: self.currentUser._id}, {loggedIn: false
+    });
     $auth.logout();
-    // User.update({id: self.currentUser}, {loggedIn: false
-    // });
+    console.log("logged out user",this.currentUser);
     this.currentUser = null;
     $state.go("login");
   }

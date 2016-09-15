@@ -10,6 +10,14 @@ MapController.$inject = ["User", "$scope", "$auth"]
 function MapController(User, $scope, $auth){
   var self = this;
   var users = User.query();
+  self.home = "";
+  self.homeLatLng = {};
+  self.work = "";
+  self.locationChosen ={};
+  self.meetDay = "";
+  self.meetMeal = "";
+  self.meetGroup = 0;
+  this.mapCenter = { lat: 51.4882, lng: -0.0193};
 
 
 
@@ -25,7 +33,9 @@ function MapController(User, $scope, $auth){
     self.meetDay = data.meetDay;
     self.meetMeal = data.meetMeal;
     self.meetGroup = data.meetGroup;
-    console.log("location", self.locationChosen)
+    self.mapCenter =self.locationChosen;
+
+    console.log("map",self.mapCenter);
 
     
   });
@@ -40,6 +50,8 @@ function MapController(User, $scope, $auth){
         self.places.push({
           name: data[i].username,
           age: data[i].age,
+          meal: data[i].meetMeal,
+          cuisine: data[i].meetCuisine,
           position: { lat: data[i].locationHome.lat, lng: data[i].locationHome.lng }
         });
       }
@@ -47,9 +59,9 @@ function MapController(User, $scope, $auth){
     // console.log(this.places);
   });
 
-  console.log("current user location chosen", this.locationChosen)
+  console.log("current user location chosen", self.locationChosen)
 
-  this.mapCenter = { lat: 51.4882, lng: -0.0193};
+
  
  
 }
@@ -92,13 +104,14 @@ function Gmap($timeout) {
             map: map,
             name: place.name,
             age: place.age,
-            label: "\xE2\x9C\x88",
+            meal: place.meal,
+            label: place.name,
             icon:{
              url: 'https://s3-eu-west-1.amazonaws.com/meetoeat/man.png'}
             });
 
           marker.infoWindow = new google.maps.InfoWindow({
-            content: place.name+" aged "+place.age+" looking to eat",
+            content: place.name+" aged "+place.age+" looking to eat "+place.meal,
             disableAutopan: true,
           });
 

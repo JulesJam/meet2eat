@@ -21,13 +21,11 @@ function MeetCreatorController(User, $state, $auth, Geolocator, Geocoder, Restau
   Geolocator()
     .then(function(position){
       self.position = position;
-      console.log(position.lat);
       var latLng = {
           lat: position.lat,
           lng: position.lng
       };
       User.update({id: self.currentUser}, {locationCurrent: latLng }, function(res) {
-        console.log("position update", res);
       });
       return Geocoder(position);
     })
@@ -45,20 +43,31 @@ function MeetCreatorController(User, $state, $auth, Geolocator, Geocoder, Restau
     });
 
   this.submit = function submit(){
-    // if (self.locationChosen === self.home){
-    //   self.locationChosen = self.locationHome
-    // }
-    // else if (self.locationChosen === self.work){
-    //   self.locationChosen = self.locationWork
-    // }
-    // else {
-    //   self.locationChosen = self.locationCurrent};
+
+    var latLng = {
+        lat: self.homeLatLng.lat,
+        lng: self.homeLatLng.lng
+    };
+   
+
+    if (self.locationChosen === self.home){
+      console.log ("converted latlng", latLng.lat, latLng.lng);
+      self.locationChosen =latLng;
+      console.log("chosen", self.locationChosen);
+      
+    }
+    else if (self.locationChosen === self.work){
+      self.locationChosen = self.workLatLng
+    }
+    else {
+      self.locationChosen = self.locationCurrent};
+
+    if (!self.meetGroup) self.meetGroup = 0;
+
 
     User.update({id: self.currentUser}, {locationChosen: self.locationChosen, meetDay: self.meetDay, meetMeal: self.meetMeal, meetGroup: self.meetGroup}, function(res) {
       console.log(res);
     });
-    console.log(this.locationChosen);
-    console.log(this.currentUser);
 
   }
 
@@ -67,13 +76,14 @@ function MeetCreatorController(User, $state, $auth, Geolocator, Geocoder, Restau
   User.get({id: this.currentUser}, function(data){
     self.home = data.locationNameHome;
     self.homeLatLng = data.locationHome;
+    self.workLatLng = data.locationWork;
     self.work = data.locationNameWork;
     self.locationChosen =data.locationChosen;
     self.meetDay = data.meetDay;
     self.meetMeal = data.meetMeal;
     self.meetGroup = data.meetGroup;
     self.locationCurrent = data.locationCurrent;
-    console.log("location", self.locationChosen)
+    console.log("location", self.locationChosen, data.locationHome, self.homeLatLng)
 
     
   });
