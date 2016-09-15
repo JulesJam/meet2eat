@@ -6,16 +6,36 @@
 console.log("linked");
 
 
-MapController.$inject = ["User", "$scope"]
-function MapController(User, $scope){
+MapController.$inject = ["User", "$scope", "$auth"]
+function MapController(User, $scope, $auth){
   var self = this;
   var users = User.query();
+
+
+
+  this.currentUser = $auth.getPayload()._id;
+
+  console.log("Current User", this.currentUser)
+
+  User.get({id: this.currentUser}, function(data){
+    self.home = data.locationNameHome;
+    self.homeLatLng = data.locationHome;
+    self.work = data.locationNameWork;
+    self.locationChosen =data.locationChosen;
+    self.meetDay = data.meetDay;
+    self.meetMeal = data.meetMeal;
+    self.meetGroup = data.meetGroup;
+    console.log("location", self.locationChosen)
+
+    
+  });
+
 
   this.places = [];
 
   User.query().$promise.then(function(data){
     for (i=0; i< data.length; i++){
-      if(data[i].locationHome) {
+      if(data[i].locationHome && data[i].loggedIn) {
         console.log(data[i].locationHome, data[i].age);
         self.places.push({
           name: data[i].username,
@@ -26,6 +46,8 @@ function MapController(User, $scope){
     }
     // console.log(this.places);
   });
+
+  console.log("current user location chosen", this.locationChosen)
 
   this.mapCenter = { lat: 51.4882, lng: -0.0193};
  
@@ -72,7 +94,7 @@ function Gmap($timeout) {
             age: place.age,
             label: "\xE2\x9C\x88",
             icon:{
-             url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
+             url: 'https://s3-eu-west-1.amazonaws.com/meetoeat/man.png'}
             });
 
           marker.infoWindow = new google.maps.InfoWindow({

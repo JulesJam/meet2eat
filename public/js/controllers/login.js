@@ -20,10 +20,14 @@ function LoginController(User, $state, $rootScope, $auth){
   }
 
   this.submit = function submit(){
+
     $auth.login(this.credentials, {
       url:"api/login"
     }).then(function(){
       $rootScope.$broadcast("loggedIn");
+      this.currentUser = $auth.getPayload();
+      User.update({id: self.currentUser}, {loggedIn: true
+      });
       $state.go('meetCreator');
       self.currentUser = $auth.getPayload();
   

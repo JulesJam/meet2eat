@@ -1,15 +1,22 @@
 body{
   position: relative;
+  font-size: 14px;
 }
 
 .card {
   background-color:#a93a37;
+  color:#c4b8b8;
 
 }
 
 .card-img-top{
   width:100px;
 
+}
+
+.card-decoration{
+  position: fixed;
+  max-width:40%;
 }
 
 .google-map{
@@ -20,13 +27,15 @@ body{
 
 .bottom-logo{
   margin-left:5%;
-  max-width: 50%;
+  max-width: 40%;
   z-index: -100;
   position: fixed;
   bottom: 0px;
   left: 0px;
 }
+
 #creator{
   width: 80%;
   margin: 0 auto;
 }
+

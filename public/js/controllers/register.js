@@ -10,6 +10,7 @@ function RegisterController(User, $state, $rootScope, $auth){
 
   this.submit = function(){
     console.log(this.user.locationNameHome);
+    this.user.avatar = "no_image.png";
     var address = this.user.locationNameHome +" UK";
     var geocoder = new google.maps.Geocoder();
 

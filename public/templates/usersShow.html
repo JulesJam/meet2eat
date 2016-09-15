@@ -11,8 +11,8 @@
       <li>Today {{usersShow.selected.username}} would like to eat Indian at around 7pm </li>
     </ul>
     <button ui-sref="users" class="btn btn-primary">Back</button>
+    <button ng-hide ="usersShow.editable" ui-sref="usersEdit({ id: usersShow.selected._id})" class="btn btn-primary">Edit</button>
   </div>
 </div>
 
 
-<button ui-sref="usersEdit({ id: usersShow.selected._id})" class="btn btn-primary">Edit</button>

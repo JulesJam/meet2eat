@@ -14,17 +14,23 @@ var userSchema = new mongoose.Schema({
   locationNameWork: String,
   locationWork: {},
   locationCurrent:{},
+  locationNameCurrent:String,
   locationChosen:{},
+  locationNameChosen:String,
   age: Number,
   occupation: String,
   foodPreference: String,
   drinkPreference: String,
   filmPreference: String,
   bookPreference: String,
-  dinningPreferences:[],
+  meetCuisines:[],
+  meetDay: String,
+  meetMeal: String,
+  meetGroup: {type: Number, value: 0},
   activeMeet: Boolean,
   activeStart: Date,
-  chatRoom: String
+  chatRoom: String,
+  loggedIn: Boolean
 });
 
 userSchema.pre('validate', function(next){

@@ -7,9 +7,25 @@ function usersIndex (req, res){
   });
 }
 
+function usersMatch (req, res){
+  User.find(function(err, usersToMatch){
+    if(err) return res.status(500).json(err);
+    User.findById(req.params.id, function(err, user, usersToMatch){
+      if(err) return res.status(500).json(err);
+      if(!user) return res.status(404).json({message: "Could not find a user which matches the requested id"});
+      return res.status(200).json(user);
+    })
+    .then(function(user){
+      usersToMatch.forEach(function(user){
+        console.log(user);
+        return res.status(200).json(usersMatched);
+      })
+    })
+  })
+}
+
 function usersCreate(req, res){
 
-  console.log(req.file);
   if(req.file) req.body.avatar = req.file.key;
 
   User.create(req.body) 
@@ -66,5 +82,6 @@ module.exports = {
   create: usersCreate,
   show: usersShow,
   update: usersUpdate,
-  delete: usersDelete
+  delete: usersDelete,
+  match: usersMatch
 }

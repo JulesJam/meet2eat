@@ -5,7 +5,8 @@ var secret  = require('../config/tokens').secret;
 
 function register(req, res){
 
-  console.log(req.body);
+  if(req.file) req.body.avatar = req.file.key;
+
   User.create(req.body, function(err, user) {
     if(err) {
       console.log(err);

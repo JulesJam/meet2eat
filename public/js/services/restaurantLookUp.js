@@ -2,31 +2,19 @@ angular
   .module("Meet2Eat")
   .factory("RestaurantLookUp", RestaurantLookUp);
 
-RestaurantLookUp.$inject = ['User'];
-function Geocoder('User') {
-    
+RestaurantLookUp.$inject = ['User', '$http'];
+function RestaurantLookUp(User, $http) {
 
-
-
-    return function(latLng) {
-        console.log(latLng);
-        var deferred = $q.defer();
-
-        var geocoder = new google.maps.Geocoder();
-
-        geocoder.geocode({ location: latLng }, function(results, status) {
-            if(status === 'OK') {
-                $rootScope.$apply(function() {
-                    deferred.resolve(results[0]);
-                });
-            }
-            else {
-                $rootScope.$apply(function() {
-                    deferred.reject(status);
-                });
-            }
-        });
-
-        return deferred.promise;
+    return {
+        getCuisines: function(location) {
+            return $http({
+                method: 'GET',
+                url: '/api/restaurants/cuisines',
+                params: location
+            })
+            .then(function(results) {
+                return results.data;
+            });
+        }
     }
-};
+}

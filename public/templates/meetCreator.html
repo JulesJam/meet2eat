@@ -1,32 +1,32 @@
-<h1>Set Up A Meet</h1>
+<h2>Set Up A Meet</h2>
 <p>To let other people know you would like to meet up please select where and when you would like to meet up and what kind of food you would like to eat.</p>
-<form id = "creator" name="meetCreator">
+<form id = "creator" name="meetCreator" ng-submit="meet.submit()">
   <h5>Where...</h5>
   <label>
-    <input type="radio" ng-model="meet.locationChoose" value="workLocation">
-    Near Work {{meet.home.locationNameWork}}
+    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.work">
+    Near Work {{meet.work}}
   </label><br>
   <label>
-    <input type="radio" ng-model="meet.locationChoose" ng-value="homeLocation">
-    Near Home {{meet.home.locationNameHome}}
+    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.home">
+    Near Home {{meet.home}}
   </label><br>
   <label>
-    <input type="radio" ng-model="meet.locationChoose" value="currentLocation">
+    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.currentLocation">
     Near current location {{meet.currentLocation}}
     
   </label><br>
   <h5>When...</h5>
   <label>
-    <input type="radio" ng-model="meet.dayChoose" value="Today">
-    Today
+    <input type="radio" ng-model="meet.meetDay" value="Today">
+    Today 
   </label><br>
   <label>
-    <input type="radio" ng-model="meet.dayChoose" ng-value="Tomorrow">
+    <input type="radio" ng-model="meet.meetDay" value="Tomorrow">
     Tomorrow
   </label><br>
 
   <label for="singleSelect"> Meet for... </label><br>
-    <select name="singleSelect" ng-model="data.singleSelect">
+    <select name="singleSelect" ng-model="meet.meetMeal">
       <option value="breakfast">Breakfast</option>
       <option value="brunch">Brunch</option>
       <option value="lunch">Lunch</option>
@@ -37,10 +37,18 @@
       <input type="checkbox" ng-model="meet.group"
                ng-true-value=true ng-false-value=false>
     </label><br>
-    <label ng-hide="!meet.group">Group Size
-    <input type="number" name="meet.groupNumber" ng-model="meet.groupnumber"  class="form-control">
+      <label ng-hide="!meet.group">Group Size
+      <input type="number" name="meet.meetGroup" ng-model="meet.meetGroup"  class="form-control">
     </label>
+    
 
+    <select name="cuisine" ng-model="meet.meetCuisines" >
+      <!-- <option disabled selected value="">Please select</option> -->
+      <option ng-repeat="cuisine in meet.cuisines track by $index"  value="{{cuisine.name}}">{{cuisine.name}}</option>  
+    </select>
+   
+    
+    <input type="submit" value="Meet2Eat" class="btn btn-primary">
   
  </form>
 

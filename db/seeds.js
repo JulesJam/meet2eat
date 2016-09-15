@@ -24,9 +24,10 @@ User.create([
     filmPreference: "54",
     bookPreference: "45",
     entertainmentPreference: "66",
-    dinningPreferences:["Indian", "Chinese"],
+    meetCuisines:["Indian", "Chinese"],
     activeMeet: true,
-    chatRoom:"room1"
+    chatRoom:"room1",
+    loggedIn: true
     },{
     username: "susan",
     email: "susan@mail",
@@ -44,7 +45,7 @@ User.create([
     filmPreference: "73",
     bookPreference: "25",
     entertainmentPreference: "25",
-    dinningPreferences:["French", "Tapas"],
+    meetCuisines:["French", "Tapas"],
     activeMeet: true,
     chatRoom:"room1"
   },{
@@ -64,7 +65,7 @@ User.create([
     filmPreference: "76",
     bookPreference: "66",
     entertainmentPreference: "66",
-    dinningPreferences:["British", "French"],
+    meetCuisines:["British", "French"],
     activeMeet: true
   },{
     username: "julian",
@@ -83,9 +84,10 @@ User.create([
     filmPreference: "65",
     bookPreference: "89",
     entertainmentPreference: "66",
-    dinningPreferences:["Korean", "Chinese"],
+    meetCuisines:["Korean", "Chinese"],
     activeMeet: true,
-    chatRoom:"room2"
+    chatRoom:"room2",
+    loggedIn: true
   },{
     username: "sarah",
     email: "sarah@mail",
@@ -103,9 +105,10 @@ User.create([
     filmPreference: "65",
     bookPreference: "89",
     entertainmentPreference: "66",
-    dinningPreferences:["Mexican", "Chinese"],
+    meetCuisines:["Mexican", "Chinese"],
     activeMeet: true,
-    chatRoom:"room2"
+    chatRoom:"room2",
+    loggedIn: true
   }
 ], function(err, users) {
   console.log(users);

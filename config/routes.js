@@ -6,6 +6,7 @@ var upload = require('./upload');
 var usersController = require('../controllers/users');
 var authController  = require('../controllers/authentications');
 var facebookController = require('../controllers/facebookOauth');
+var restaurantController = require('../controllers/restaurant');
 
 function secureRoute(req, res, next){
   if(!req.headers.authorization) return res.status(401).json({ message: "Unauthorised"});
@@ -18,6 +19,8 @@ function secureRoute(req, res, next){
     next();
   });
 }
+
+router.get('/restaurants/cuisines', restaurantController.cuisines);
 
 router.route('/users')
   // .all(secureRoute)
@@ -34,6 +37,9 @@ router.route('/users/:id')
 
 router.route('/chat/:id')
   .get(usersController.show);
+
+router.route('/match/:id')
+  .get(usersController.match)
 
 router.route('/register')
   .post(upload.single('avatar'), authController.register);

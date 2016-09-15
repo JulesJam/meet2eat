@@ -25,7 +25,6 @@ var server = app.listen(port, function(){
 
 var io = require('socket.io').listen(server);
 var users = {};
-var buffersecret = new Buffer(secret, "base64");
 
 io.on('connection', socketioJwt.authorize({
   secret: secret,
@@ -40,8 +39,9 @@ io.on('connection', socketioJwt.authorize({
   });
 
   socket.on('pm', function(data) {
-    users[socket.decoded_token.username].emit('pm', data);
-    socket.broadcast.emit('pm', data);
+    console.log(data);
+    users[data.recipient].emit('pm', data);
+    socket.emit('pm', data);
   });
 
   socket.on('disconnect', function() {

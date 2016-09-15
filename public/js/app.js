@@ -15,9 +15,9 @@ Router.$inject = ["$stateProvider", "$urlRouterProvider"];
 function Router($stateProvider, $urlRouterProvider) {
   
   $stateProvider
-    .state("home", {
+    .state("about", {
       url: "/",
-      templateUrl: "/templates/home.html"
+      templateUrl: "/templates/about.html"
     })
     .state("register", {
       url: "/register",
@@ -33,6 +33,12 @@ function Router($stateProvider, $urlRouterProvider) {
       url: "/users",
       templateUrl: "/templates/users.html",
       controller: "UsersController as users"
+    })
+
+    .state("match", {
+      url: "/match/:id",
+      templateUrl: "/templates/users.html",
+      controller: "MatchController as match"
     })
 
     .state("usersShow",{

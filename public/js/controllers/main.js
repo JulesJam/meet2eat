@@ -26,6 +26,8 @@ function MainController(TokenService, $state, $rootScope, $auth) {
 
   this.logout = function logout() {
     $auth.logout();
+    // User.update({id: self.currentUser}, {loggedIn: false
+    // });
     this.currentUser = null;
     $state.go("login");
   }
