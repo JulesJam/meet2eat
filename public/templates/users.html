@@ -9,6 +9,8 @@
           <h4 class="card-title">{{ user.username }}  {{ user.age}}</h4>
           <h6>Lives in: {{ user.locationNameHome}}</h6>
           <h6>Works in: {{ user.locationNameWork}}</h6>
+          <h6>Would meet for a {{ user.meetCuisines}} {{ user.meetMeal}}</h6>
+          <h6>Match Score {{user.match}}</h6>
           <p class="card-text">{{ user.diningPreferences }}</p>
           <button ui-sref="usersShow({ id: user._id})">See More</button>
           <button ui-sref="chat({ id: user._id})">Chat</button>
