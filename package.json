@@ -4,7 +4,8 @@
   "description": "WDI_LDN_21_PROJECT_4",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
