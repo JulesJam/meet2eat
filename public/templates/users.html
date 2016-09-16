@@ -1,16 +1,18 @@
-<h1>Users</h1>
+<div class="container">  
+  <h1>Users</h1>
 
-<div class="row">
-  <div class="col-sm-6 col-md-4" ng-show=" user.loggedIn" ng-repeat="user in users.all" >
-    <div class="card">
-      <img class="card-img-top" ng-src="{{ user.avatar }}" alt="Profile Picture">
-      <div class="card-block">
-        <h4 class="card-title">{{ user.username }}  {{ user.age}}</h4>
-        <h6>Lives in: {{ user.locationNameHome}}</h6>
-        <h6>Works in: {{ user.locationNameWork}}</h6>
-        <p class="card-text">{{ user.diningPreferences }}</p>
-        <button ui-sref="usersShow({ id: user._id})">See More</button>
-        <button ui-sref="chat({ id: user._id})">Chat</button>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-show=" user.loggedIn" ng-repeat="user in users.all" >
+      <div class="card">
+        <img class="card-img-top" ng-src="{{ user.avatar }}" alt="Profile Picture">
+        <div class="card-block">
+          <h4 class="card-title">{{ user.username }}  {{ user.age}}</h4>
+          <h6>Lives in: {{ user.locationNameHome}}</h6>
+          <h6>Works in: {{ user.locationNameWork}}</h6>
+          <p class="card-text">{{ user.diningPreferences }}</p>
+          <button ui-sref="usersShow({ id: user._id})">See More</button>
+          <button ui-sref="chat({ id: user._id})">Chat</button>
+        </div>
       </div>
     </div>
   </div>

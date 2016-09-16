@@ -1,18 +1,20 @@
-<h1>{{ usersShow.selected.username}}</h1>
+<div class="container">
+  <h1>{{ usersShow.selected.username}}</h1>
 
-<div class="card">
-  <img class="card-img-top" ng-src="{{usersShow.selected.avatar}}" alt="Card image cap">
-  <div class="card-block">
-    <h4 class="card-title">{{usersShow.selected.username}}</h4>
-    <h6>Is {{usersShow.selected.age}} and Spends most of the day {{usersShow.selected.occupation}}
-    <ul>
-      <li>Lives in {{usersShow.selected.locationNameHome}}</li> 
-      <li>Works near {{usersShow.selected.locationNameWork}}</li>
-      <li>Today {{usersShow.selected.username}} would like to eat Indian at around 7pm </li>
-    </ul>
-    <button ui-sref="users" class="btn btn-primary">Back</button>
-    <button ng-hide ="usersShow.editable" ui-sref="usersEdit({ id: usersShow.selected._id})" class="btn btn-primary">Edit</button>
+  <div class="card">
+    <img class="card-img-top" ng-src="{{usersShow.selected.avatar}}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{usersShow.selected.username}}</h4>
+      <h6>Is {{usersShow.selected.age}} and Spends most of the day {{usersShow.selected.occupation}}
+      <ul>
+        <li>Lives in {{usersShow.selected.locationNameHome}}</li> 
+        <li>Works near {{usersShow.selected.locationNameWork}}</li>
+        <li>Today {{usersShow.selected.username}} would like to eat Indian at around 7pm </li>
+      </ul>
+      <button ui-sref="users" class="btn btn-primary">Back</button>
+      <button ng-hide ="usersShow.editable" ui-sref="usersEdit({ id: usersShow.selected._id})" class="btn btn-primary">Edit</button>
+    </div>
   </div>
-</div>
+</h6>
 
 

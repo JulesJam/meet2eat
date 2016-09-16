@@ -1,26 +1,28 @@
-<h1>{{ chat.selected.username}}</h1>
+<div class="container">
+  <h1>{{ chat.selected.username}}</h1>
 
-<div class="card" ng-controller="ChatController as chat">
-  <img class="card-img-top" src="../images/no_image.png" alt="Card image cap">
-  <div class="card-block">
-    <h4 class="card-title">{{chat.selected.username}}</h4>
-    <h6>Is {{chat.selected.age}} and Spends most of the day {{chat.selected.occupation}}
-    <ul>
-      <li>Lives in {{chat.selected.locationNameHome}}</li> 
-      <li>Works near {{chat.selected.locationNameWork}}</li>
-      <li>Today {{chat.selected.username}} would like to eat Indian at around 7pm </li>
-    </ul>
-    <ul>
-      <li ng-repeat="message in chat.all track by $index">{{message.username}} said {{ message.message }}</li>
-    </ul>
+  <div class="card" ng-controller="ChatController as chat">
+    <img class="card-img-top" src="../images/no_image.png" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">{{chat.selected.username}}</h4>
+      <h6>Is {{chat.selected.age}} and Spends most of the day {{chat.selected.occupation}}</h6>
+      <ul>
+        <li>Lives in {{chat.selected.locationNameHome}}</li> 
+        <li>Works near {{chat.selected.locationNameWork}}</li>
+        <li>Today {{chat.selected.username}} would like to eat Indian at around 7pm </li>
+      </ul>
+      <ul>
+        <li ng-repeat="message in chat.all track by $index">{{message.username}} said {{ message.message }}</li>
+      </ul>
 
-   
+     
 
-    <form ng-submit="chat.sendMessage()">
-      <input type="text" ng-model="chat.message">
-      <button >Send</button>
-    </form>
-    <button ui-sref="users" class="btn btn-primary">Back</button>
+      <form ng-submit="chat.sendMessage()">
+        <input type="text" ng-model="chat.message">
+        <button >Send</button>
+      </form>
+      <button ui-sref="users" class="btn btn-primary">Back</button>
+    </div>
   </div>
 </div>
 

@@ -39,7 +39,7 @@ function MeetCreatorController(User, $state, $auth, Geolocator, Geocoder, Restau
       self.cuisines.reverse();
     })
     .catch(function(reason){
-      self.message = "Could Note Be Determined"
+      self.message = "Could Not Be Determined"
     });
 
   this.submit = function submit(){
@@ -68,6 +68,7 @@ function MeetCreatorController(User, $state, $auth, Geolocator, Geocoder, Restau
     User.update({id: self.currentUser}, {locationChosen: self.locationChosen, meetDay: self.meetDay, meetMeal: self.meetMeal, meetGroup: self.meetGroup}, function(res) {
       console.log(res);
     });
+    $state.go('map');
 
   }
 

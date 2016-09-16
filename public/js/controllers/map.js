@@ -33,7 +33,8 @@ function MapController(User, $scope, $auth){
     self.meetDay = data.meetDay;
     self.meetMeal = data.meetMeal;
     self.meetGroup = data.meetGroup;
-    self.mapCenter =self.locationChosen;
+    self.mapCenter =data.locationChosen;
+    
 
     console.log("map",self.mapCenter);
 
@@ -42,6 +43,7 @@ function MapController(User, $scope, $auth){
 
 
   this.places = [];
+
 
   User.query().$promise.then(function(data){
     for (i=0; i< data.length; i++){
@@ -52,6 +54,7 @@ function MapController(User, $scope, $auth){
           age: data[i].age,
           meal: data[i].meetMeal,
           cuisine: data[i].meetCuisine,
+          occupation:data[i].occupation,
           position: { lat: data[i].locationHome.lat, lng: data[i].locationHome.lng }
         });
       }
@@ -66,9 +69,29 @@ function MapController(User, $scope, $auth){
  
 }
 
-Gmap.$inject = ['$timeout'];
+Gmap.$inject = ['$timeout', "$auth", "User"];
 
-function Gmap($timeout) {
+
+
+function Gmap($timeout, $auth, User) {
+  var self = this
+  
+  this.currentUser = $auth.getPayload()
+  console.log("new center yeah!", this.currentUser);
+
+  User.get({id: this.currentUser._id}, function(data){
+
+    self.currentUserMatch = data.match;
+    self.locationChosen = data.locationChosen
+
+    
+  });
+
+
+
+
+
+
   return {
     restrict: 'E',
     replace: true,
@@ -79,6 +102,7 @@ function Gmap($timeout) {
     },
 
     link: function(scope, element, attr){
+
 
       var markers = [];
 
@@ -111,7 +135,7 @@ function Gmap($timeout) {
             });
 
           marker.infoWindow = new google.maps.InfoWindow({
-            content: place.name+" aged "+place.age+" looking to eat "+place.meal,
+            content: place.name+" aged "+place.age+" who spends most of the day "+place.occupation+" is looking to eat "+place.meal,
             disableAutopan: true,
           });
 

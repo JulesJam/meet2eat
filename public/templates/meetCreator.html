@@ -1,56 +1,58 @@
-<h2>Set Up A Meet</h2>
-<p>To let other people know you would like to meet up please select where and when you would like to meet up and what kind of food you would like to eat.</p>
-<form id = "creator" name="meetCreator" ng-submit="meet.submit()">
-  <h5>Where...</h5>
-  <label>
-    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.work">
-    Near Work {{meet.work}}
-  </label><br>
-  <label>
-    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.home">
-    Near Home {{meet.home}}
-  </label><br>
-  <label>
-    <input type="radio" ng-model="meet.locationChosen" ng-value="meet.currentLocation">
-    Near current location {{meet.currentLocation}}
-    
-  </label><br>
-  <h5>When...</h5>
-  <label>
-    <input type="radio" ng-model="meet.meetDay" value="Today">
-    Today 
-  </label><br>
-  <label>
-    <input type="radio" ng-model="meet.meetDay" value="Tomorrow">
-    Tomorrow
-  </label><br>
-
-  <label for="singleSelect"> Meet for... </label><br>
-    <select name="singleSelect" ng-model="meet.meetMeal">
-      <option value="breakfast">Breakfast</option>
-      <option value="brunch">Brunch</option>
-      <option value="lunch">Lunch</option>
-      <option value="dinner">Dinner</option>
-    </select>
-
-    <label>Fancy meeting up in a group...
-      <input type="checkbox" ng-model="meet.group"
-               ng-true-value=true ng-false-value=false>
+ <div class="container">
+  <h2>Set Up A Meet</h2>
+  <p>To let other people know you would like to meet up please select where and when you would like to meet up and what kind of food you would like to eat.</p>
+  <form id = "creator" name="meetCreator" ng-submit="meet.submit()">
+    <h5>Where...</h5>
+    <label>
+      <input type="radio" ng-model="meet.locationChosen" ng-value="meet.work">
+      Near Work {{meet.work}}
     </label><br>
-      <label ng-hide="!meet.group">Group Size
-      <input type="number" name="meet.meetGroup" ng-model="meet.meetGroup"  class="form-control">
-    </label>
-    
+    <label>
+      <input type="radio" ng-model="meet.locationChosen" ng-value="meet.home">
+      Near Home {{meet.home}}
+    </label><br>
+    <label>
+      <input type="radio" ng-model="meet.locationChosen" ng-value="meet.currentLocation">
+      Near current location {{meet.currentLocation}}
+      
+    </label><br>
+    <h5>When...</h5>
+    <label>
+      <input type="radio" ng-model="meet.meetDay" value="Today">
+      Today 
+    </label><br>
+    <label>
+      <input type="radio" ng-model="meet.meetDay" value="Tomorrow">
+      Tomorrow
+    </label><br>
 
-    <select name="cuisine" ng-model="meet.meetCuisines" >
-      <!-- <option disabled selected value="">Please select</option> -->
-      <option ng-repeat="cuisine in meet.cuisines track by $index"  value="{{cuisine.name}}">{{cuisine.name}}</option>  
-    </select>
-   
-    
-    <input type="submit" value="Meet2Eat" class="btn btn-primary">
-  
- </form>
+    <label for="singleSelect"> Meet for... </label><br>
+      <select name="singleSelect" ng-model="meet.meetMeal">
+        <option value="breakfast">Breakfast</option>
+        <option value="brunch">Brunch</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+      </select>
 
-<img class="bottom-logo" ng-src=" 
-https://s3-eu-west-1.amazonaws.com/meetoeat/meetoeat_background.png" alt="image of people in a restaurant">
+      <label>Fancy meeting up in a group...
+        <input type="checkbox" ng-model="meet.group"
+                 ng-true-value=true ng-false-value=false>
+      </label><br>
+        <label ng-hide="!meet.group">Group Size
+        <input type="number" name="meet.meetGroup" ng-model="meet.meetGroup"  class="form-control">
+      </label>
+      
+
+      <select name="cuisine" ng-model="meet.meetCuisines" >
+        <!-- <option disabled selected value="">Please select</option> -->
+        <option ng-repeat="cuisine in meet.cuisines track by $index"  value="{{cuisine.name}}">{{cuisine.name}}</option>  
+      </select>
+     
+      
+      <input type="submit" value="Meet2Eat" class="btn btn-primary">
+    
+   </form>
+
+  <img class="bottom-logo" ng-src=" 
+  https://s3-eu-west-1.amazonaws.com/meetoeat/meetoeat_background.png" alt="image of people in a restaurant">
+</div>

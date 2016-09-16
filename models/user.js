@@ -17,6 +17,7 @@ var userSchema = new mongoose.Schema({
   locationNameCurrent:String,
   locationChosen:{},
   locationNameChosen:String,
+  match: Number,
   age: Number,
   occupation: String,
   foodPreference: String,

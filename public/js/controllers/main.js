@@ -42,7 +42,7 @@ function MainController(User, TokenService, $state, $rootScope, $auth) {
 
   $rootScope.$on("unauthorized", function() {
     $state.go("login");
-    self.errorMessage = "You must be logged in!";
+    // self.errorMessage = "You must be logged in!";
   });
 
   $rootScope.$on("$stateChangeStart", function() {

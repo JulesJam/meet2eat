@@ -20,6 +20,7 @@ function RegisterController(User, $state, $rootScope, $auth){
         var lat = ((results[0].geometry.viewport.f.b + results[0].geometry.viewport.f.f)/2);
         var lng = ((results[0].geometry.viewport.b.b + results[0].geometry.viewport.b.f)/2);
         self.user.locationHome = {lat: lat, lng: lng};
+        self.match = this.drinkPreference+this.foodPreference+this.filmPreference+this.bookPreference+this.entertainmentPreference;
         console.log("user.. ", self.user);
         $auth.signup(self.user,{
           url: "/api/register"

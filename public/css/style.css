@@ -3,6 +3,39 @@ body{
   font-size: 14px;
 }
 
+
+#about{
+
+  height: 100vh;
+  background-image: url("https://s3-eu-west-1.amazonaws.com/meetoeat/mainBackground.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin:0;
+  padding:0;
+  color:#df524f;
+}
+
+#about-content{
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.indent{
+  padding-left: 40px;
+}
+
+.btn btn-primary{
+  display:inline-block;
+}
+
+h6 {
+  font-size: 90%;
+}
+
+
+
+
 .card {
   background-color:#a93a37;
   color:#c4b8b8;
@@ -39,3 +72,8 @@ body{
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1024px) { /* Specific to this particular image 
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
