@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var bluebird = require('bluebird');
 var secret = require('../config/tokens').secret;
 var qs = require('qs');
+var config = require('../config/url');
 
 function login (req, res) {
   request.post({
@@ -12,7 +13,7 @@ function login (req, res) {
       client_id: process.env.FACEBOOK_API_KEY,
       client_secret: process.env.FACEBOOK_API_SECRET,
       code: req.body.code,
-      redirect_uri:"http://localhost:3000/"
+      redirect_uri: config.url[process.env.NODE_ENV]
     },
     json: true,
    

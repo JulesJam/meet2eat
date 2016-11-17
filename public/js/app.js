@@ -1,6 +1,6 @@
 angular
   .module("Meet2Eat", ['ui.router', 'ngResource', 'angular-jwt', 'satellizer'])
-  .constant("API_URL", "http://localhost:3000/api")
+  .constant("API_URL", window.location.origin + "/api")
   .config(setupInterceptor)
   .config(Router);
 
@@ -8,8 +8,6 @@ setupInterceptor.$inject = ["$httpProvider"];
 function setupInterceptor($httpProvider){
   return $httpProvider.interceptors.push("AuthInterceptor");
 }
-
-
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];
 function Router($stateProvider, $urlRouterProvider) {
