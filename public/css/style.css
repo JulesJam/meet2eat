@@ -1,11 +1,9 @@
-body{
+body {
   position: relative;
   font-size: 14px;
 }
 
-
-#about{
-
+#about {
   height: 100vh;
   background-image: url("https://s3-eu-west-1.amazonaws.com/meetoeat/mainBackground.jpg");
   background-attachment: fixed;
@@ -17,15 +15,15 @@ body{
   color:#df524f;
 }
 
-#about-content{
+#about-content {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-.indent{
+.indent {
   padding-left: 40px;
 }
 
-.btn btn-primary{
+.btn btn-primary {
   display:inline-block;
 }
 
@@ -33,32 +31,28 @@ h6 {
   font-size: 90%;
 }
 
-
-
-
 .card {
   background-color:#a93a37;
   color:#c4b8b8;
-
 }
 
-.card-img-top{
+.card-img-top {
   width:100px;
 
 }
 
-.card-decoration{
+.card-decoration {
   position: fixed;
   max-width:40%;
 }
 
-.google-map{
+.google-map {
   width: 500px;
   height: 500px;
   margin:50px auto;
 }
 
-.bottom-logo{
+.bottom-logo {
   margin-left:5%;
   max-width: 40%;
   z-index: -100;
@@ -67,13 +61,7 @@ h6 {
   left: 0px;
 }
 
-#creator{
+#creator {
   width: 80%;
   margin: 0 auto;
 }
-
-@media screen and (max-width: 1024px) { /* Specific to this particular image 
-  img.bg {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-  }
