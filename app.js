@@ -8,10 +8,6 @@ var bodyParser= require('body-parser');
 var cors      = require('cors');
 var bluebird  = require('bluebird');
 
-
-    
-
-
 var environment = app.get('env');
 var port = process.env.PORT || 3000;
 
@@ -21,7 +17,7 @@ var databaseUri = require('./config/db')(environment);
 
 var server = app.listen(port, function(){
  console.log("Express running on port "+port);
-  });
+});
 
 var io = require('socket.io').listen(server);
 var users = {};
