@@ -42,9 +42,6 @@ userSchema.pre('validate', function(next){
   next();
 })
 
-
-
-
 userSchema.set ('toJSON', {
   transform: function (document, json){
     delete json.passwordHash;
@@ -53,7 +50,6 @@ userSchema.set ('toJSON', {
   },
   getters: true
 });
-
 
 userSchema.virtual('password')
   .set(function(password){

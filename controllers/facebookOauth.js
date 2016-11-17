@@ -29,9 +29,9 @@ function login (req, res) {
   .then(function(profile) {
     return User.findOne({ email: profile.email })
       .then(function(user) {
-        if(user) {
+        if (user) {
           user.facebookId = profile.id;
-          user.avatar = profile.avatar_url;
+          user.avatar = profile.avatar_url || "http://fillmurray.com/300/300";
         }
         else {
           user = new User({
@@ -51,8 +51,6 @@ function login (req, res) {
       avatar: user.avatar,
       username: user.username
     }
-    console.log("user",user)
-
 
     var token = jwt.sign(payload, secret, { expiresIn: '24h' });
 
