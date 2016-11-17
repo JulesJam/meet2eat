@@ -1,6 +1,6 @@
 angular
-.module("Meet2Eat")
-.factory("RestaurantLookUp", RestaurantLookUp);
+  .module("Meet2Eat")
+  .factory("RestaurantLookUp", RestaurantLookUp);
 
 RestaurantLookUp.$inject = ['User', '$http'];
 function RestaurantLookUp(User, $http) {
